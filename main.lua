@@ -16,19 +16,36 @@ echo "welcome to skynet creator !"
 
 local parser = argparse("main.lua")
 parser:description("skynet creator")
-parser:argument("root"):description("root")
+parser:option("--force"):default("false"):description("force remove if workdir is exist")
+parser:argument("workdir"):description("the path of skynet project you want to create.")
 
 local args = parser:parse()
-local root = args.root
+local root = args.workdir
 
 -- mkdir
 echo "workdir: ${root}"
-if not file_exists(root) then
-    bash.execute "mkdir -p ${root}"
-    bash.execute "cd ${root} && git init -b main"
+if args.force == "true" then
+    bash.execute "rm -rf ${root}"
+else
+    if file_exists(root) then
+        echo "${root} is already create!"
+        return
+    end
 end
+bash.execute "mkdir -p ${root}"
+bash.execute "cd ${root} && git init -b main"
 
+-- skynet
 if not file_exists("${root}/skynet") then
     echo "add skynet: ${github.skynet}"
     bash.execute "cd ${root} && git submodule add ${github.skynet}"
 end
+
+bash.execute "mkdir -p ${root}/lualib"
+bash.execute "cp templates/lualib/* ${root}/lualib/"
+
+bash.execute "mkdir -p ${root}/service"
+bash.execute "cp templates/service/* ${root}/service/"
+
+bash.execute "mkdir -p ${root}/etc"
+bash.execute "cp templates/etc/* ${root}/etc/"
