@@ -1,0 +1,1 @@
+./build/bin/skynet ./etc/config.test

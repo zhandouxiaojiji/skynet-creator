@@ -25,7 +25,10 @@ local root = args.workdir
 -- mkdir
 echo "workdir: ${root}"
 if args.force == "true" then
-    bash.execute "rm -rf ${root}"
+    bash.execute "rm -rf ${root}/etc"
+    bash.execute "rm -rf ${root}/make"
+    bash.execute "rm -rf ${root}/service"
+    bash.execute "rm -rf ${root}/lualib"
 else
     if file_exists(root) then
         echo "${root} is already create!"
@@ -41,6 +44,8 @@ if not file_exists("${root}/skynet") then
     bash.execute "cd ${root} && git submodule add ${github.skynet}"
 end
 
+bash.execute "cp templates/.gitignore ${root}/"
+
 bash.execute "mkdir -p ${root}/lualib"
 bash.execute "cp templates/lualib/* ${root}/lualib/"
 
@@ -51,4 +56,8 @@ bash.execute "mkdir -p ${root}/etc"
 bash.execute "cp templates/etc/* ${root}/etc/"
 
 bash.execute "mkdir -p ${root}/make"
-bash.execute "cp templates/make/* ${root}/make/"
+bash.execute "cp templates/Makefile ${root}"
+bash.execute "cp templates/make/include.mk ${root}/make/"
+bash.execute "cp templates/make/skynet.mk ${root}/make/"
+
+bash.execute "cp templates/test.sh ${root}"
