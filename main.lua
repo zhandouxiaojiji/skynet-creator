@@ -49,3 +49,6 @@ bash.execute "cp templates/service/* ${root}/service/"
 
 bash.execute "mkdir -p ${root}/etc"
 bash.execute "cp templates/etc/* ${root}/etc/"
+
+bash.execute "mkdir -p ${root}/make"
+bash.execute "cp templates/make/* ${root}/make/"
