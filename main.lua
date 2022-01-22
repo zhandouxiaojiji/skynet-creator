@@ -57,7 +57,6 @@ bash.execute "cp templates/etc/* ${root}/etc/"
 
 bash.execute "mkdir -p ${root}/make"
 bash.execute "cp templates/Makefile ${root}"
-bash.execute "cp templates/make/include.mk ${root}/make/"
 bash.execute "cp templates/make/skynet.mk ${root}/make/"
 
 bash.execute "cp templates/test.sh ${root}"

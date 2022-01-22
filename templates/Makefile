@@ -1,8 +1,6 @@
 .PHONY: all clean
 all: build
 
-include make/include.mk
-
 TOP=.
 BUILD_DIR=./build
 BIN_DIR=./build/bin
@@ -25,6 +23,9 @@ build:
 	-mkdir -p $(BUILD_CLUALIB_DIR)
 	-mkdir -p $(BUILD_CSERVICE_DIR)
 	-mkdir -p $(BUILD_CLIB_DIR)
+
+MAKES=$(shell find ./make -name *.mk)
+include ${MAKES}
 
 clean:
 	cd skynet && $(MAKE) clean
