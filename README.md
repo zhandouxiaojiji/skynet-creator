@@ -1,0 +1,4 @@
+# Skynet Creator
+skynet是一个非常棒的游戏服务器框架，但由于太过轻量级，对新手不太友好，无法像其它框架一样做到开箱即用，往往搭建第一个helloworld的启动配置Makefile等就让新手一头雾水。
+
+skynet-creator是为了解决这问题而生的，它相当于是skynet的脚手架，能一键生成一个全新的skynet项目(包含启动配置，测试示例，Makefile等)，编译过后就能直接上手写lua服务。并且在后续的开发中，也可以使用skynet-creator很方便的导入第三方库。
