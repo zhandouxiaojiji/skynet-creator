@@ -6,7 +6,7 @@ BUILD_DIR=./build
 BIN_DIR=./build/bin
 LOG_DIR=./logs
 
-INCLUDE_DIR=$(BUILD_DIR)/include                                                                                                                
+INCLUDE_DIR=$(BUILD_DIR)/include
 BUILD_CLUALIB_DIR=$(BUILD_DIR)/clualib
 BUILD_CSERVICE_DIR=$(BUILD_DIR)/cservice
 BUILD_CLIB_DIR=$(BUILD_DIR)/clib
@@ -23,6 +23,8 @@ build:
 	-mkdir -p $(BUILD_CLUALIB_DIR)
 	-mkdir -p $(BUILD_CSERVICE_DIR)
 	-mkdir -p $(BUILD_CLIB_DIR)
+
+SHARED = -fPIC --shared -I$(INCLUDE_DIR)
 
 MAKES=$(shell find ./make -name *.mk)
 include ${MAKES}
