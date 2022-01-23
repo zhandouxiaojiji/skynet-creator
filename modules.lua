@@ -13,5 +13,10 @@ return {
         name = "uuid",
         submodule = "https://github.com/Tieske/uuid.git",
         make = "uuid.mk",
-    }
+    },
+    {
+        name = "argparse",
+        submodule = "https://github.com/mpeterv/argparse.git",
+        make = "argparse.mk"
+    },
 }
