@@ -5,7 +5,12 @@ local modules = {
         name = "lua-cjson",
         submodule = "https://github.com/cloudwu/lua-cjson.git",
         make = "lua-cjson.mk",
-    }
+    },
+    {
+        name = "lua-openssl",
+        submodule = "git@github.com:zhongfq/lua-openssl.git",
+        make = "lua-openssl.mk",
+    },
 }
 
 local function echo(str)
