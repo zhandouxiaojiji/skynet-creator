@@ -6,10 +6,10 @@ skynet-creator就是为了解决这问题而生的，它相当于是skynet的脚
 ## 使用
 ```sh
 # 创建项目
-lua main.lua /your/project/path
+lua main.lua /my/project/path
 
 # 引入第三方库
-lua import.lua /your/project/path module1 module2 ...
+lua import.lua /my/project/path lua-cjson lua-openssl ...
 
 # 查看参数
 lua main.lua -h
@@ -27,3 +27,7 @@ lua import.lua -h
 + [uuid](https://github.com/Tieske/uuid.git)
 + [argparse](https://github.com/mpeterv/argparse.git)
 + 更多的c库和lua库已在路上。。。
+
+## TODO
++ 添加luacheck选项
++ 添加精简/缺省/完全等创建选项
