@@ -10,6 +10,11 @@ return {
         make = "lua-openssl.mk",
     },
     {
+        name = "pbc",
+        submodule = "https://github.com/cloudwu/pbc.git",
+        make = "pbc.mk",
+    },
+    {
         name = "uuid",
         submodule = "https://github.com/Tieske/uuid.git",
         make = "uuid.mk",
