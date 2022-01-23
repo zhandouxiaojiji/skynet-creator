@@ -8,9 +8,14 @@ local modules = {
     },
     {
         name = "lua-openssl",
-        submodule = "git@github.com:zhongfq/lua-openssl.git",
+        submodule = "https://github.com/zhongfq/lua-openssl.git",
         make = "lua-openssl.mk",
     },
+    {
+        name = "uuid",
+        submodule = "https://github.com/Tieske/uuid.git",
+        make = "uuid.mk"
+    }
 }
 
 local function echo(str)
