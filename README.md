@@ -23,6 +23,7 @@ lua import.lua -h
 + [lua-cjson](https://github.com/cloudwu/lua-cjson.git)
 + [lua-openssl](https://github.com/zhongfq/lua-openssl)
 + [pbc](https://github.com/cloudwu/pbc.git)
++ [lfs](https://github.com/keplerproject/luafilesystem.git)
 + [uuid](https://github.com/Tieske/uuid.git)
 + [argparse](https://github.com/mpeterv/argparse.git)
 + 更多的c库和lua库已在路上。。。

@@ -15,6 +15,11 @@ return {
         make = "pbc.mk",
     },
     {
+        name = "lfs",
+        submodule = "https://github.com/keplerproject/luafilesystem.git",
+        make = "lfs.mk",
+    },
+    {
         name = "uuid",
         submodule = "https://github.com/Tieske/uuid.git",
         make = "uuid.mk",
