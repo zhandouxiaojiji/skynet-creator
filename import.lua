@@ -3,7 +3,7 @@ package.path = "lualib/?.lua;"..package.path
 local argparse = require "argparse"
 local bash = require "bash"
 local github = require "github"
-local modules = require "modules"
+local libs = require "libs"
 
 local function echo(str)
     print(bash.format(str))
@@ -30,5 +30,5 @@ if not file_exists(root) then
 end
 
 for _, name in pairs(args.modules) do
-    modules.import(root, name)
+    libs.import(root, name)
 end
