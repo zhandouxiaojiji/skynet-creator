@@ -22,6 +22,7 @@ lua import.lua -h
 ## 第三方库
 + [lua-cjson](https://github.com/cloudwu/lua-cjson.git) json库
 + [lua-openssl](https://github.com/zhongfq/lua-openssl) 各类加解密算法库
++ [lua-lz4](https://github.com/witchu/lua-lz4.git) 字符串压缩
 + [pbc](https://github.com/cloudwu/pbc.git) protobuf库
 + [crab](https://github.com/xjdrew/crab) 敏感字过滤
 + [lfs](https://github.com/keplerproject/luafilesystem.git) lua文件系统
