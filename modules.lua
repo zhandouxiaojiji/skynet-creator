@@ -15,6 +15,11 @@ return {
         make = "pbc.mk",
     },
     {
+        name = "crab",
+        submodule = "https://github.com/xjdrew/crab.git",
+        make = "crab.mk"
+    },
+    {
         name = "lfs",
         submodule = "https://github.com/keplerproject/luafilesystem.git",
         make = "lfs.mk",

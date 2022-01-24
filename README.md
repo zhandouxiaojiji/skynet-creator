@@ -20,12 +20,13 @@ lua import.lua -h
 + [skynet-creator-sample](https://github.com/zhandouxiaojiji/skynet-creator-sample)
 
 ## 第三方库
-+ [lua-cjson](https://github.com/cloudwu/lua-cjson.git)
-+ [lua-openssl](https://github.com/zhongfq/lua-openssl)
-+ [pbc](https://github.com/cloudwu/pbc.git)
-+ [lfs](https://github.com/keplerproject/luafilesystem.git)
-+ [uuid](https://github.com/Tieske/uuid.git)
-+ [argparse](https://github.com/mpeterv/argparse.git)
++ [lua-cjson](https://github.com/cloudwu/lua-cjson.git) json库
++ [lua-openssl](https://github.com/zhongfq/lua-openssl) 各类加解密算法库
++ [pbc](https://github.com/cloudwu/pbc.git) protobuf库
++ [crab](https://github.com/xjdrew/crab) 敏感字过滤
++ [lfs](https://github.com/keplerproject/luafilesystem.git) lua文件系统
++ [uuid](https://github.com/Tieske/uuid.git) uuid生成
++ [argparse](https://github.com/mpeterv/argparse.git) lua参数解析
 + 更多的c库和lua库已在路上。。。
 
 ## TODO
