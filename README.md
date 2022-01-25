@@ -20,15 +20,18 @@ lua import.lua -h
 + [skynet-creator-sample](https://github.com/zhandouxiaojiji/skynet-creator-sample)
 
 ## 第三方库
-+ [lua-cjson](https://github.com/cloudwu/lua-cjson.git) json库
-+ [lua-openssl](https://github.com/zhongfq/lua-openssl) 各类加解密算法库
-+ [lua-lz4](https://github.com/witchu/lua-lz4.git) 字符串压缩
-+ [pbc](https://github.com/cloudwu/pbc.git) protobuf库
-+ [crab](https://github.com/xjdrew/crab) 敏感字过滤
-+ [lfs](https://github.com/keplerproject/luafilesystem.git) lua文件系统
-+ [uuid](https://github.com/Tieske/uuid.git) uuid生成
-+ [argparse](https://github.com/mpeterv/argparse.git) lua参数解析
-+ 更多的c库和lua库已在路上。。。
+|  包名   | 类型  | 说明 | 来源 |
+|  ----  | ----  | ---- | ---- |
+| lua-cjson | c | json库 | https://github.com/cloudwu/lua-cjson.git 
+| lua-openssl | c | 各类加解密算法库 | https://github.com/zhongfq/lua-openssl |
+| lua-lz4 | c | 字符串压缩 | https://github.com/witchu/lua-lz4.git |
+| pbc | c | protobuf库 | https://github.com/cloudwu/pbc.git |
+| crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
+| lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem.git | 
+| uuid | lua  | uuid生成 | https://github.com/Tieske/uuid.git |
+| argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse.git | 
+
+更多的c库和lua库已在路上。。。
 
 ## TODO
 + 添加luacheck选项
