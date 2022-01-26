@@ -4,3 +4,6 @@
 [submodule "3rd/uuid"]
 	path = 3rd/uuid
 	url = https://github.com/Tieske/uuid.git
+[submodule "3rd/behavior3"]
+	path = 3rd/behavior3
+	url = https://github.com/zhandouxiaojiji/behavior3lua.git

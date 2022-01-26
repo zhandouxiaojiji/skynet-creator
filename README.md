@@ -30,6 +30,7 @@ lua import.lua -h
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem.git | 
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid.git |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse.git | 
+| behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua.git | 
 
 更多的c库和lua库已在路上。。。
 
