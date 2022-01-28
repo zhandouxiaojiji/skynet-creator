@@ -1,14 +1,12 @@
 # Skynet Creator
-skynet是一个非常棒的游戏服务器框架，但由于太过轻量级，无法像其它框架一样做到开箱即用，往往搭建一个新项目的步骤会非常繁琐，要编写Makefile，引入skynet和第三方库，还要写启动配置等。
-
-skynet-creator就是为了解决这问题而生的，它相当于是skynet的脚手架，能一键生成一个全新的skynet项目(包含启动配置，测试示例，Makefile等)，编译过后就能直接上手写lua服务。并且在后续的开发中，也可以使用skynet-creator按需导入第三方库。
+这是一个轻便的skynet脚手架，能一键生成一个全新的项目(包含引用skynet，启动配置，测试示例，Makefile等)，编译过后就能直接上手写lua服务。另外还收藏了一些游戏开发常用的c/lua库还有一些服务，可以在后续的开发中按需导入。
 
 ## 使用
 ```sh
 # 创建项目
 lua main.lua /my/project/path
 
-# 引入第三方库
+# 导入第三方库
 lua import.lua /my/project/path lua-cjson lua-openssl ...
 
 # 查看参数
@@ -29,6 +27,9 @@ lua import.lua -h
 + [skynet-creator-sample](https://github.com/zhandouxiaojiji/skynet-creator-sample)
 
 ## 第三方库
++ 需要编译的c库都是以submodule的形式导入项目，导入的时候引用源仓库的主干，最新的文档和说明请参考原仓库。
++ lua和service是直接从creator拷贝过去的(非submodule)，后续有需要的自行手动更新.
+
 |  包名   | 类型  | 说明 | 来源 |
 |  ----  | ----  | ---- | ---- |
 | lua-cjson | c | json库 | https://github.com/cloudwu/lua-cjson |
@@ -39,6 +40,7 @@ lua import.lua -h
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
 | jps | c | JPS寻路算法 | https://github.com/rangercyh/jps | 
 | luaprofile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
+| snapshot | c | lua快照(检测内存泄漏用) | https://github.com/lvzixun/lua-snapshot |
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
