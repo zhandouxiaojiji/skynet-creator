@@ -1,7 +1,7 @@
 # Skynet Creator
-skynet是一个非常棒的游戏服务器框架，但由于太过轻量级，对新手不太友好，无法像其它框架一样做到开箱即用，往往搭建第一个helloworld的启动配置Makefile等就让新手知难而退。
+skynet是一个非常棒的游戏服务器框架，但由于太过轻量级，无法像其它框架一样做到开箱即用，往往搭建一个新项目的步骤会非常繁琐，要编写Makefile，引入skynet和第三方库，还要写启动配置等。
 
-skynet-creator就是为了解决这问题而生的，它相当于是skynet的脚手架，能一键生成一个全新的skynet项目(包含启动配置，测试示例，Makefile等)，编译过后就能直接上手写lua服务。并且在后续的开发中，也可以使用skynet-creator很方便的导入第三方库。
+skynet-creator就是为了解决这问题而生的，它相当于是skynet的脚手架，能一键生成一个全新的skynet项目(包含启动配置，测试示例，Makefile等)，编译过后就能直接上手写lua服务。并且在后续的开发中，也可以使用skynet-creator按需导入第三方库。
 
 ## 使用
 ```sh
@@ -16,6 +16,15 @@ lua main.lua -h
 lua import.lua -h
 ```
 
+## 生成项目结构
++ 3rd 引入的第三方库(主要是c库)
++ build 编译目录，所有生成的目标都在这，包括可执行文件skynet,lua还有各种so文件等
++ lualib 引用的lua库，或者是用户自己的lua库
++ service 引用的lua服务，或者是用户自己的lua库
++ make 第三方库的makefile目录，每次编译的时候会遍历这一个目录的所有.mk文件
++ skynet 子模块
++ Makefile 主makefile文件，编译skynet和第三方库
++ test.sh 运行test测试
 ## 示例项目
 + [skynet-creator-sample](https://github.com/zhandouxiaojiji/skynet-creator-sample)
 
@@ -39,3 +48,5 @@ lua import.lua -h
 ## TODO
 + 添加luacheck选项
 + 添加精简/缺省/完全等创建选项
++ 启动配置及mongo等配置的生成
++ 常用skynet服务导入
