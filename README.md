@@ -38,6 +38,7 @@ lua import.lua -h
 | crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
 | jps | c | JPS寻路算法 | https://github.com/rangercyh/jps | 
+| luaprofile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
