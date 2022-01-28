@@ -32,6 +32,7 @@ lua import.lua -h
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
+| fsm | lua | 有限状态机 | https://github.com/unindented/lua-fsm |
 
 更多的c库和lua库已在路上。。。
 

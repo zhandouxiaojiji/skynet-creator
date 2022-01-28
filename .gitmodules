@@ -7,3 +7,6 @@
 [submodule "3rd/behavior3"]
 	path = 3rd/behavior3
 	url = https://github.com/zhandouxiaojiji/behavior3lua.git
+[submodule "3rd/fsm"]
+	path = 3rd/fsm
+	url = https://github.com/unindented/lua-fsm.git
