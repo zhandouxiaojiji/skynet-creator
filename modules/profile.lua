@@ -1,5 +1,5 @@
 return {
-    name = "luaprofile",
+    name = "profile",
     submodule = "https://github.com/lvzixun/luaprofile.git",
-    make = "luaprofile.mk",
+    make = "profile.mk",
 }

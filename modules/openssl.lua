@@ -1,5 +1,5 @@
 return {
-    name = "lua-openssl",
+    name = "openssl",
     submodule = "https://github.com/zhongfq/lua-openssl.git",
-    make = "lua-openssl.mk",
+    make = "openssl.mk",
 }

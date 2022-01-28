@@ -1,5 +1,5 @@
 return {
-    name = "lua-lz4",
+    name = "lz4",
     submodule = "https://github.com/witchu/lua-lz4.git",
-    make = "lua-lz4.mk"
+    make = "lz4.mk"
 }

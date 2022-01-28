@@ -1,5 +1,5 @@
 return {
-    name = "lua-cjson",
+    name = "cjson",
     submodule = "https://github.com/cloudwu/lua-cjson.git",
-    make = "lua-cjson.mk",
+    make = "cjson.mk",
 }
