@@ -4,10 +4,10 @@
 ## 使用
 ```sh
 # 创建项目
-lua main.lua /my/project/path
+lua main.lua /my/work/dir
 
 # 导入第三方库
-lua import.lua /my/project/path lua-cjson lua-openssl ...
+lua import.lua /my/work/dir cjson openssl pbc ...
 
 # 查看参数
 lua main.lua -h
