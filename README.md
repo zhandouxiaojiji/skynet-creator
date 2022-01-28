@@ -32,21 +32,21 @@ lua import.lua -h
 
 |  包名   | 类型  | 说明 | 来源 |
 |  ----  | ----  | ---- | ---- |
-| lua-cjson | c | json库 | https://github.com/cloudwu/lua-cjson |
-| lua-openssl | c | 各类加解密算法库 | https://github.com/zhongfq/lua-openssl |
-| lua-lz4 | c | 字符串压缩 | https://github.com/witchu/lua-lz4 |
+| cjson | c | json库 | https://github.com/cloudwu/lua-cjson |
+| openssl | c | 各类加解密算法库 | https://github.com/zhongfq/lua-openssl |
+| lz4 | c | 字符串压缩 | https://github.com/witchu/lua-lz4 |
 | pbc | c | protobuf库 | https://github.com/cloudwu/pbc.git |
 | crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
 | jps | c | JPS寻路算法 | https://github.com/rangercyh/jps | 
-| luaprofile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
+| profile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
 | snapshot | c | lua快照(检测内存泄漏用) | https://github.com/lvzixun/lua-snapshot |
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
 | fsm | lua | 有限状态机 | https://github.com/unindented/lua-fsm |
 
-更多的c库和lua库已在路上。。。
+更多的c库和lua库已在路上，大佬们有发现什么好用的库，欢迎pr
 
 ## TODO
 + 添加luacheck选项
