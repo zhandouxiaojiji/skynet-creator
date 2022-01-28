@@ -12,4 +12,4 @@ ${BUILD_CLUALIB_DIR}/snapshot.so: ${SNAPSHOT_SOURCE}
 	gcc $(CFLAGS) $(SHARED) -I3rd/snapshot/ $^ -o $@ $(LDFLAGS)
 
 lsnapshot:
-	cp 3rd/snapshot/lsnapshot.lua lualib
+	cp 3rd/snapshot/lsnapshot.lua $(LUALIB_DIR)
