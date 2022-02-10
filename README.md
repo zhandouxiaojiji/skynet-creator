@@ -36,6 +36,7 @@ lua import.lua -h
 | openssl | c | 各类加解密算法库 | https://github.com/zhongfq/lua-openssl |
 | lz4 | c | 字符串压缩 | https://github.com/witchu/lua-lz4 |
 | pbc | c | protobuf库 | https://github.com/cloudwu/pbc.git |
+| ecs | c | ecs框架 | https://github.com/cloudwu/luaecs.git |
 | crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
 | jps | c | JPS寻路算法 | https://github.com/rangercyh/jps | 
