@@ -47,7 +47,7 @@ end
 bash.execute "cp templates/.gitignore ${root}/"
 
 bash.execute "mkdir -p ${root}/lualib"
-bash.execute "cp templates/lualib/* ${root}/lualib/"
+bash.execute "cp -r templates/lualib/* ${root}/lualib/"
 
 bash.execute "mkdir -p ${root}/service"
 bash.execute "cp templates/service/* ${root}/service/"
