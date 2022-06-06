@@ -40,13 +40,15 @@ lua import.lua -h
 | ecs | c | ecs框架 | https://github.com/cloudwu/luaecs |
 | crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
 | lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
-| jps | c | JPS寻路算法 | https://github.com/rangercyh/jps | 
+| jps | c | JPS寻路算法 | https://github.com/rangercyh/jps |
+| navigation | lua | 平滑的网格寻路 | https://github.com/zhandouxiaojiji/lua-navigation |
 | profile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
 | snapshot | c | lua快照(检测内存泄漏用) | https://github.com/lvzixun/lua-snapshot |
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
 | argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
 | fsm | lua | 有限状态机 | https://github.com/unindented/lua-fsm |
+| revent | lua | 远程消息 | https://github.com/zhandouxiaojiji/skynet-remote-event |
 
 更多的c库和lua库已在路上，大佬们有发现什么好用的库，欢迎pr
 
