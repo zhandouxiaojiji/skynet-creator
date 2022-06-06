@@ -10,3 +10,6 @@
 [submodule "3rd/fsm"]
 	path = 3rd/fsm
 	url = https://github.com/unindented/lua-fsm.git
+[submodule "3rd/revent"]
+	path = 3rd/revent
+	url = git@github.com:zhandouxiaojiji/skynet-remote-event.git
