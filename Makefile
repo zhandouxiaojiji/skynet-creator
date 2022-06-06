@@ -8,3 +8,4 @@ all:
 	cp 3rd/fsm/src/fsm.lua templates/lualib
 	cp -r 3rd/behavior3/behavior3 templates/lualib
 	cp 3rd/revent/revent.lua templates/lualib
+	cp 3rd/fog/fog.lua templates/lualib
