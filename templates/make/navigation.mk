@@ -10,4 +10,4 @@ ${NAVI_SOURCE}:
 	git submodule update --init 3rd/navigation
 
 ${BUILD_CLUALIB_DIR}/navigation.so: ${NAVI_SOURCE}
-	gcc -g3 -O2 -rdynamic -Wall -fPIC -shared -o -I3rd/navigation/ $^ -o $@
+	${CC} $(CFLAGS) $(SHARED) -o -I3rd/navigation/ $^ -o $@

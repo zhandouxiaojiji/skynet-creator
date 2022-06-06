@@ -26,7 +26,9 @@ build:
 	-mkdir -p $(BUILD_CSERVICE_DIR)
 	-mkdir -p $(BUILD_CLIB_DIR)
 
-SHARED = -fPIC --shared -I$(INCLUDE_DIR)
+CC = gcc
+CFLAGS = -g -O2
+SHARED = -fPIC --shared
 
 MAKES=$(shell find ./make -name *.mk)
 include ${MAKES}
