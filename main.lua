@@ -36,7 +36,7 @@ else
     end
 end
 bash.execute "mkdir -p ${root}"
-bash.execute "cd ${root} && git init -b main"
+bash.execute "cd ${root} && git init"
 
 -- skynet
 if not file_exists("${root}/skynet") then

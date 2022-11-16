@@ -36,8 +36,11 @@ function M.sub(cluster_name, service, event, callback_func)
     skynet.fork(function ()
         while agent.watching do
             local args = agent_call(agent, "wait", agent.id)
+            if not agent.watching then
+                break
+            end
             for _, arg in ipairs(args) do
-                callback_func(tunpack(arg))
+                xpcall(callback_func, debug.traceback, tunpack(arg))
             end
         end
     end)
@@ -78,6 +81,7 @@ function M.unregister(id)
     id2agent[id] = nil
     local agents = event2agents[agent.event]
     agents[id] = nil
+    Skynet.wakeup(agent.co)
 end
 
 function M.wait(id)
@@ -100,8 +104,15 @@ function M.pub(event, ...)
     end
     for _, agent in pairs(agents) do
         tinsert(agent.args, {...})
-        skynet.wakeup(agent.co)
+        if agent.co then
+            skynet.wakeup(agent.co)
+        end
     end
+end
+
+function M.pub_to_agent(agent, ...)
+    tinsert(agent.args, {...})
+    Skynet.wakeup(agent.co)
 end
 
 return M
