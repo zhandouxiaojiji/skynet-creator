@@ -49,6 +49,8 @@ lua import.lua -h
 | behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
 | fsm | lua | 有限状态机 | https://github.com/unindented/lua-fsm |
 | revent | lua | 远程消息 | https://github.com/zhandouxiaojiji/skynet-remote-event |
+| bewater | lua | 一些常用lua库集合 | 原仓库已经弃用，现由skynet-creator继续维护 |
+| fog | lua | 迷雾算法 | https://github.com/zhandouxiaojiji/lua-fog |
 
 更多的c库和lua库已在路上，大佬们有发现什么好用的库，欢迎pr
 
