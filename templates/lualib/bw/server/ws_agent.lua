@@ -94,7 +94,7 @@ function M.start(handler)
     skynet.start(function()
         skynet.dispatch("lua", function(_,_, cmd, ...)
             local f = assert(M[cmd], cmd)
-            bewater.ret(f(...))
+            skynet.ret(f(...))
         end)
     end)
 end

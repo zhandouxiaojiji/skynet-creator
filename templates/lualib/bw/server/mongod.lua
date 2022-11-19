@@ -1,6 +1,5 @@
 local skynet  = require "skynet.manager"
 local mongo   = require "skynet.db.mongo"
-local bewater = require "bw.bewater"
 local util    = require "bw.util"
 local log     = require "bw.log"
 
@@ -110,7 +109,7 @@ return function(conf)
 
         skynet.dispatch("lua", function(_, _, cmd, ...)
             local f = assert(M[cmd], cmd)
-            bewater.ret(f(...))
+            skynet.ret(f(...))
         end)
     end)
 end

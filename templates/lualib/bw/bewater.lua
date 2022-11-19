@@ -4,13 +4,6 @@ local log    = require "bw.log"
 local M = {}
 
 M.route = {}
-M.NORET = "NORET"
-
-function M.ret(noret, ...)
-    if noret ~= M.NORET then
-        skynet.retpack(noret, ...)
-    end
-end
 
 local function __TRACEBACK__(errmsg)
     local track_text = debug.traceback(tostring(errmsg), 2)
@@ -146,15 +139,15 @@ function M.proxy(addr, is_send)
     })
 end
 
-function M.start(handler)
-    assert(handler)
+function M.start(command)
+    assert(command)
     skynet.start(function()
         skynet.dispatch("lua", function(_,_, cmd, ...)
-            local f = assert(handler[cmd], cmd)
-            M.ret(f(...))
+            local f = assert(command[cmd], cmd)
+            skynet.ret(f(...))
         end)
-        if handler.start then
-            handler.start()
+        if command.start then
+            command.start()
         end
     end)
 end

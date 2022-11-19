@@ -36,13 +36,13 @@ function gateserver.start(handler, agentname, port, preload)
 
         skynet.dispatch("lua", function(_, _, cmd, subcmd, ...)
             if CMD[cmd] then
-                return bewater.ret(CMD[cmd](subcmd, ...))
+                return skynet.ret(CMD[cmd](subcmd, ...))
             end
             local f = assert(handler[cmd], cmd)
             if type(f) == "function" then
-                bewater.ret(f(subcmd, ...))
+                skynet.ret(f(subcmd, ...))
             else
-                bewater.ret(f[subcmd](f, ...))
+                skynet.ret(f[subcmd](f, ...))
             end
         end)
         if handler.start then

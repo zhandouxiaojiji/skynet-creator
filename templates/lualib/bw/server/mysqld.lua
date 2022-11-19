@@ -22,7 +22,7 @@ return function(conf)
             local f = assert(db[cmd])
             local ret = f(db, ...)
             assert(not ret.err,string.format("mysql error:%s\n%s", table.pack(...)[1], util.dump(ret)))
-            bewater.ret(ret)
+            skynet.ret(ret)
         end)
     end)
 end

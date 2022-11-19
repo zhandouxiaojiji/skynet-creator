@@ -2,13 +2,12 @@ local skynet = require "skynet"
 local socket = require "skynet.socket"
 local bewater = require "bw.bewater"
 local log = require "bw.log"
-local util = require "bw.util"
 local httpd = require "http.httpd"
 local sockethelper = require "http.sockethelper"
 local urllib = require "http.url"
 local json = require "cjson.safe"
 local errcode = require "def.errcode"
-local api = require "def.api"
+local api = require "bw.api"
 
 local string = string
 
@@ -36,7 +35,7 @@ function M.start(handler, agentname, port, num_agents)
         if handler then
             skynet.dispatch("lua", function(_,_, cmd, ...)
                 local f = assert(handler[cmd], cmd)
-                bewater.ret(f(...))
+                skynet.ret(f(...))
             end)
             if handler.start then
                 handler.start()
