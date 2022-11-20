@@ -39,20 +39,37 @@ lua import.lua -h
 | pbc | c | protobuf库 | https://github.com/cloudwu/pbc |
 | ecs | c | ecs框架 | https://github.com/cloudwu/luaecs |
 | crab | c | 敏感字过滤 | https://github.com/xjdrew/crab |
-| lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem | 
+| lfs | c | lua文件系统 | https://github.com/keplerproject/luafilesystem |
 | jps | c | JPS寻路算法 | https://github.com/rangercyh/jps |
 | navigation | lua | 平滑的网格寻路 | https://github.com/zhandouxiaojiji/lua-navigation |
 | profile | c | lua性能分析 | https://github.com/lvzixun/luaprofile |
 | snapshot | c | lua快照(检测内存泄漏用) | https://github.com/lvzixun/lua-snapshot |
 | uuid | lua  | uuid生成 | https://github.com/Tieske/uuid |
-| argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse | 
-| behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua | 
+| argparse | lua | lua参数解析 | https://github.com/mpeterv/argparse |
+| behavior3 | lua | 行为树 | https://github.com/zhandouxiaojiji/behavior3lua |
 | fsm | lua | 有限状态机 | https://github.com/unindented/lua-fsm |
 | revent | lua | 远程消息 | https://github.com/zhandouxiaojiji/skynet-remote-event |
 | bewater | lua | 一些常用lua库集合 | 原仓库已经弃用，现由skynet-creator继续维护 |
 | fog | lua | 迷雾算法 | https://github.com/zhandouxiaojiji/lua-fog |
+| crypto | c | 加解密算法库 | https://github.com/zhandouxiaojiji/lua-crypto.git |
 
 更多的c库和lua库已在路上，大佬们有发现什么好用的库，欢迎pr
+
+## 相关库安装
+如果生成的项目在make的时候报缺失相关依赖，可以参考以下脚本
+### ubuntu
+```shell
+sudo apt-get install autoconf
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install openssl libssl-dev
+```
+
+### centos
+```shell
+sudo yum install autoconf
+sudo yum install curl-devel
+sudo yum install openssl-devel
+```
 
 ## TODO
 + 添加luacheck选项
