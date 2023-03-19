@@ -1,7 +1,9 @@
 include "config.path"
+include "config.openai"
 
 thread = 8
 logger = nil
 harbor = 0
 start = "main"	-- main script
 bootstrap = "snlua bootstrap"	-- The service for bootstrap
+enablessl = true

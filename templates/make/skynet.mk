@@ -13,7 +13,7 @@ $(SKYNET_MAKEFILE):
 	git submodule update --init
 
 build-skynet: | $(SKYNET_MAKEFILE)
-	cd skynet && $(MAKE) PLAT=linux $(SKYNET_DEP_PATH)
+	cd skynet && $(MAKE) PLAT=linux $(SKYNET_DEP_PATH) TLS_MODULE=ltls
 
 skynet: build-skynet
 	cp skynet/skynet-src/skynet_malloc.h $(INCLUDE_DIR)
