@@ -44,7 +44,7 @@ function create_project() {
     cp "${RESOURCES_DIR}/templates/.gitignore" "${workdir}/"
 
     mkdir -p "${workdir}/lualib"
-    cp -r "${RESOURCES_DIR}/templates/lualib"/* "${workdir}/lualib/"
+    # cp -r "${RESOURCES_DIR}/templates/lualib"/* "${workdir}/lualib/"
 
     mkdir -p "${workdir}/service"
     cp "${RESOURCES_DIR}/templates/service"/* "${workdir}/service/"
@@ -72,7 +72,13 @@ function create_project() {
 function import_modules() {
     for module in "$@"; do
         echo "导入模块: $module"
-        cp -r "${RESOURCES_DIR}/modules/$module" .
+        module_script="${RESOURCES_DIR}/modules/${module}.sh"
+        if [ -f "$module_script" ]; then
+            RESOURCES_DIR="${RESOURCES_DIR}" bash "$module_script"
+            echo "导入完成"
+        else
+            echo "模块导入脚本不存在: $module_script"
+        fi
     done
 }
 
