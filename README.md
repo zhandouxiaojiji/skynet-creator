@@ -3,15 +3,18 @@
 
 ## 使用
 ```sh
+# 安装
+make
+sudo make install
+
 # 创建项目
-lua main.lua /my/work/dir
+skynet-creator create /path/to/new/project
 
 # 导入第三方库
-lua import.lua /my/work/dir cjson openssl pbc ...
+skyent-creator import cjson openssl pbc ...
 
 # 查看参数
-lua main.lua -h
-lua import.lua -h
+skynet-creator --help
 ```
 
 ## 生成项目结构
