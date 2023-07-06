@@ -1,5 +1,4 @@
 include "config.path"
-include "config.openai"
 
 thread = 8
 logger = nil
