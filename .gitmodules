@@ -16,3 +16,6 @@
 [submodule "3rd/fog"]
 	path = 3rd/fog
 	url = git@github.com:zhandouxiaojiji/lua-fog.git
+[submodule "3rd/git-hooks"]
+	path = 3rd/git-hooks
+	url = git@github.com:zhandouxiaojiji/git-hooks.git

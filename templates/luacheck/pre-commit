@@ -1,0 +1,22 @@
+#!/bin/sh
+#STAGED_FILES=$(find ./ -name *.lua)
+STAGED_FILES=$(git status -s | grep "^[A|M|R|C|U|??].*lua$" | awk '{printf $NF "\n"}')
+if [[ "$STAGED_FILES" = "" ]]; then
+    exit 0
+fi
+
+echo -e "LUACHECK...\n"
+# Check for luacheck
+which luacheck &> /dev/null
+if [[ "$?" == 1 ]]; then
+    echo -e "\e[1;31mplease install luacheck\e[0m"
+    exit 1
+fi
+luacheck --config .luacheckrc $STAGED_FILES
+if [[ "$?" == 0 ]]; then
+    echo -e "\e[1;32mCOMMIT SUCCESSED\e[0m\n"
+    exit 0
+else
+    echo -e "\e[1;31mCOMMIT FAILED\e[0m\n"
+    exit 1
+fi
