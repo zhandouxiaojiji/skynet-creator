@@ -74,8 +74,12 @@ sudo yum install curl-devel
 sudo yum install openssl-devel
 ```
 
+### 配置luacheck
+```shell
+skynet-creator import luacheck #配置默认的.luacheckrc，并安装git pre-commit钩子
+```
+
 ## TODO
-+ 添加luacheck选项
 + 添加精简/缺省/完全等创建选项
 + 启动配置及mongo等配置的生成
 + 常用skynet服务导入
