@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #STAGED_FILES=$(find ./ -name *.lua)
 STAGED_FILES=$(git status -s | grep "^[A|M|R|C|U|??].*lua$" | awk '{printf $NF "\n"}')
 if [[ "$STAGED_FILES" = "" ]]; then

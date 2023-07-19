@@ -9,4 +9,4 @@ ${LUALIB_DIR}/ecs.lua:
 	cp 3rd/ecs/ecs.lua lualib/ecs.lua
 
 ${BUILD_CLUALIB_DIR}/ecs.so: ${ECS_SOURCE}
-	${CC} $(CFLAGS) $(SHARED) -DTEST_LUAECS -I 3rd/ecs -o $@ $^
+	${CC} $(CFLAGS) $(SHARED) -DTEST_LUAECS -I 3rd/ecs -Iskynet/3rd/lua -o $@ $^

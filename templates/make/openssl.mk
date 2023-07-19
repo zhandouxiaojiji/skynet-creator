@@ -44,4 +44,4 @@ $(SUBSIDIAR_C):
 	cd 3rd/openssl && git submodule update --init
 
 ${BUILD_CLUALIB_DIR}/openssl.so:${OPENSSL_SOUCE}
-	${CC} $(CFLAGS) -I3rd/openssl/src -I3rd/openssl/deps/auxiliar $(SHARED) $^ -o $@ -lssl -lcrypto
+	${CC} $(CFLAGS) -I3rd/openssl/src -I3rd/openssl/deps/auxiliar -Iskynet/3rd/lua $(SHARED) $^ -o $@ -lssl -lcrypto

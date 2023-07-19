@@ -11,4 +11,4 @@ ${PBC_BINDING}:
 
 ${BUILD_CLUALIB_DIR}/protobuf.so: ${PBC_SOURCE} ${PBC_BINDING}
 	-cd 3rd/pbc && ${MAKE} lib
-	${CC} ${CFLAGS} ${SHARED} -I3rd/pbc 3rd/pbc/binding/lua53/pbc-lua53.c -o $@ -L3rd/pbc/build -lpbc
+	${CC} ${CFLAGS} ${SHARED} -I3rd/pbc -Iskynet/3rd/lua 3rd/pbc/binding/lua53/pbc-lua53.c -o $@ -L3rd/pbc/build -lpbc

@@ -11,5 +11,5 @@ SOURCE=3rd/crypto/luabinding.c \
 	git submodule update --init 3rd/crypto/luabinding
 
 ${BUILD_CLUALIB_DIR}/crypto.so:${SOURCE}
-	${CC} $(CFLAGS) -I3rd/lua/crypto $(SHARED) $^ -o $@ $(LDFLAGS) -lcrypto
+	${CC} $(CFLAGS) -I3rd/lua/crypto -Iskynet/3rd/lua $(SHARED) $^ -o $@ $(LDFLAGS) -lcrypto
 

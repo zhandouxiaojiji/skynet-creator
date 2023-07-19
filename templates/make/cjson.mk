@@ -8,5 +8,5 @@ CJSON_SOURCE=3rd/cjson/lua_cjson.c \
 	git submodule update --init 3rd/cjson
 
 ${BUILD_CLUALIB_DIR}/cjson.so:${CJSON_SOURCE}
-	${CC} $(CFLAGS) -I3rd/lua/cjson $(SHARED) $^ -o $@ $(LDFLAGS)
+	${CC} $(CFLAGS) -I3rd/lua/cjson -Iskynet/3rd/lua $(SHARED) $^ -o $@ $(LDFLAGS)
 
