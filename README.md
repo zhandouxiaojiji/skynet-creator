@@ -55,6 +55,7 @@ skynet-creator --help
 | bewater | lua | 一些常用lua库集合 | 原仓库已经弃用，现由skynet-creator继续维护 |
 | fog | lua | 迷雾算法 | https://github.com/zhandouxiaojiji/lua-fog |
 | crypto | c | 加解密算法库 | https://github.com/zhandouxiaojiji/lua-crypto.git |
+| packet | c | 二进制打包与解析 | https://github.com/zhandouxiaojiji/lua-packet |
 
 更多的c库和lua库已在路上，大佬们有发现什么好用的库，欢迎pr
 
