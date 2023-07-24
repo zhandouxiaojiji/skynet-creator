@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp -v $RESOURCES_DIR/templates/lualib/behavior3 ./lualib
+cp -rv $RESOURCES_DIR/templates/lualib/behavior3 ./lualib
