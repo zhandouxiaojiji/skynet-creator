@@ -39,7 +39,11 @@ function mt:run(env)
         vars[i] = env:get_var(var_name)
     end
     local func = assert(process[self.name].run, self.name)
-    vars = table.pack(func(self, env, table.unpack(vars)))
+    if self.data.input then
+        vars = table.pack(func(self, env, table.unpack(vars, 1, #self.data.input)))
+    else
+        vars = table.pack(func(self, env, table.unpack(vars)))
+    end
     local ret = vars[1]
     assert(ret, self.info)
     if ret ~= bret.RUNNING then
@@ -50,7 +54,7 @@ function mt:run(env)
         env:set_var(var_name, vars[i + 1])
     end
     env.last_ret = ret
-    --print("fini", self.name, self.node_id, table.unpack(vars))
+    --print("fini", self.name, self.node_id, table.unpack(vars, 1, #self.data.input))
 
     if self.data.debug then
         local var_str = ''
