@@ -12,10 +12,10 @@
 	url = https://github.com/unindented/lua-fsm.git
 [submodule "3rd/revent"]
 	path = 3rd/revent
-	url = https://github.com:zhandouxiaojiji/skynet-remote-event.git
+	url = https://github.com/zhandouxiaojiji/skynet-remote-event.git
 [submodule "3rd/fog"]
 	path = 3rd/fog
-	url = https://github.com:zhandouxiaojiji/lua-fog.git
+	url = https://github.com/zhandouxiaojiji/lua-fog.git
 [submodule "3rd/git-hooks"]
 	path = 3rd/git-hooks
-	url = https://github.com:zhandouxiaojiji/git-hooks.git
+	url = https://github.com/zhandouxiaojiji/git-hooks.git
