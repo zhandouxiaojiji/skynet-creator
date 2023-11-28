@@ -16,5 +16,5 @@ all:
 install:
 	install -m 0755 skynet-creator.sh /usr/local/bin/skynet-creator
 	mkdir -p /usr/local/share/skynet-creator
-	rm -r /usr/local/share/skynet-creator/*
+	rm -rf /usr/local/share/skynet-creator/*
 	cp -r lualib modules templates /usr/local/share/skynet-creator
