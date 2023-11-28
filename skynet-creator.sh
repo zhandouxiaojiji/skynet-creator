@@ -50,7 +50,7 @@ function create_project() {
     cp "${RESOURCES_DIR}/templates/service"/* "${workdir}/service/"
 
     mkdir -p "${workdir}/etc"
-    cp -r "${RESOURCES_DIR}/templates/etc"/{.,}* "${workdir}/etc/"
+    cp -r "${RESOURCES_DIR}/templates/etc"/* "${workdir}/etc/"
 
     mkdir -p "${workdir}/make"
     cp "${RESOURCES_DIR}/templates/Makefile" "${workdir}/"
