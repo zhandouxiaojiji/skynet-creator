@@ -67,6 +67,7 @@ skynet-creator --help
 sudo apt-get install autoconf
 sudo apt-get install libcurl4-openssl-dev
 sudo apt-get install openssl libssl-dev
+sudo apt-get install build-essential
 ```
 
 ### centos
