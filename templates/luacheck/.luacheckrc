@@ -4,6 +4,7 @@ color = true
 std = "max"
 
 include_files = {
+    "include_files/*",
 }
 
 exclude_files = {
