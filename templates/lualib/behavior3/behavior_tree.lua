@@ -1,6 +1,5 @@
 local behavior_node = require 'behavior3.behavior_node'
 local behavior_ret = require 'behavior3.behavior_ret'
-local json = require 'json'
 
 local meta = {
     __newindex = function(_, k)
@@ -22,28 +21,26 @@ local trees = {}
 local mt = {}
 mt.__index = mt
 function mt:init(name, tree_data)
-
     self.name = name
-    self.tick = 0
     local data = const(tree_data)
     self.root = behavior_node.new(data.root, self)
 end
 
 function mt:run(env)
-    -- print(string.format('===== tree:%s, tick:%s, stack:%d =====', self.name, self.tick, #env.stack))
     if #env.stack > 0 then
         local last_node = env.stack[#env.stack]
+        local last_ret
         while last_node do
-            local ret = last_node:run(env)
-            if ret == behavior_ret.RUNNING then
+            last_ret = last_node:run(env)
+            if last_ret == behavior_ret.RUNNING then
                 break
             end
             last_node = env.stack[#env.stack]
         end
+        return last_ret
     else
-        self.root:run(env)
+        return self.root:run(env)
     end
-    self.tick = self.tick + 1
 end
 
 function mt:interrupt(env)
@@ -75,6 +72,7 @@ local function new_env(params)
         return env.vars[k]
     end
     function env:set_var(k, v)
+        if k == "" then return end
         self.vars[k] = v
     end
     function env:get_inner_var(node, k)
@@ -101,7 +99,7 @@ function M.new(name, tree_data, env_params)
     return {
         tree = tree,
         run = function()
-            tree:run(env)
+            return tree:run(env)
         end,
         interrupt = function()
             tree:interrupt(env)
@@ -110,6 +108,7 @@ function M.new(name, tree_data, env_params)
             return #env.stack > 0
         end,
         set_env = function (_, k, v)
+            if k == "" then return end
             env[k] = v
         end
     }
