@@ -1,5 +1,5 @@
-local log   = require "bw.log"
-local uuid  = require "uuid"
+local uuid = require "uuid"
+local log = require "bw.log"
 
 local string_gsub = string.gsub
 local uid2auth = {}

@@ -6,7 +6,7 @@ local errcode = {}
 local code2describe = {}
 local name2errcode = {}
 
-local function REG(err_name, code, describe)
+local function REG(code, err_name, describe)
     assert(not code2describe[code], string.format("errcode 0x%x exist", code))
     assert(not name2errcode[err_name], string.format("errcode '%s' exist", err_name))
     name2errcode[err_name] = code
@@ -20,6 +20,10 @@ end
 
 function errcode.get_name2errcode()
     return name2errcode
+end
+
+function errcode.pack(code)
+    return {err = code}
 end
 
 setmetatable(errcode, {__index = function (_, name)

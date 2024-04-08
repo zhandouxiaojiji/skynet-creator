@@ -6,13 +6,12 @@ local httpd = require "http.httpd"
 local sockethelper = require "http.sockethelper"
 local urllib = require "http.url"
 local json = require "cjson.safe"
-local errcode = require "def.errcode"
-local api = require "bw.api"
+local api = require "bw.server.web_api"
+local errcode = require "proto.errcode" -- TODO 耦合了本地的errcode
 
 local string = string
 
 local M = {}
-
 function M.start(handler, agentname, port, num_agents)
     skynet.start(function()
         local agents = {}
@@ -20,9 +19,7 @@ function M.start(handler, agentname, port, num_agents)
             agents[i] = skynet.newservice(agentname)
         end
 
-        if type(port) == 'string' then
-            port = tonumber(skynet.getenv(port))
-        end
+        assert(port)
 
         local curr = 1
         local fd = socket.listen("0.0.0.0", port)
@@ -35,7 +32,7 @@ function M.start(handler, agentname, port, num_agents)
         if handler then
             skynet.dispatch("lua", function(_,_, cmd, ...)
                 local f = assert(handler[cmd], cmd)
-                skynet.ret(f(...))
+                skynet.retpack(f(...))
             end)
             if handler.start then
                 handler.start()
@@ -182,6 +179,9 @@ end
 function M.start_agent(handler)
     skynet.start(function()
         handler = handler or {}
+        if handler.start then
+            handler.start()
+        end
         -- 如果是非字符串，handler需要提供pack和unpack方法
         default_pack = handler.pack or default_pack
         default_unpack = handler.unpack or default_unpack

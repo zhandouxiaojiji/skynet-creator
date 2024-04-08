@@ -1,18 +1,12 @@
-local skynet    = require "skynet"
-local socket    = require "skynet.socket"
+local skynet = require "skynet"
+local bewater = require "bw.bewater"
 local websocket = require "http.websocket"
-local json      = require "cjson.safe"
-local log       = require "bw.log"
-local bewater   = require "bw.bewater"
-local errcode   = require "def.errcode"
+local json = require "cjson.safe"
+local log = require "bw.log"
 
-local type = type
-local string = string
+local fd2user = {}
 
-local fd2role = {}
-local role2fd = {}
-
-local protocol, pack, unpack, process, is_binary, onclose
+local protocol, pack, unpack, process, is_binary, onclose, errcode
 
 local function default_pack(ret)
     return json.encode(ret)
@@ -22,7 +16,29 @@ local function default_unpack(str)
     return json.decode(str)
 end
 
-local M = {}
+local function create_user(fd, ip)
+    local user = {
+        fd = fd,
+        ip = ip,
+        session = nil,
+    }
+    fd2user[fd] = user
+    return user
+end
+
+local function get_user(fd)
+    return fd2user[fd]
+end
+
+local function destroy_user(fd)
+    local user = fd2user[fd]
+    if user then
+        onclose(user)
+        fd2user[fd] = nil
+    end
+end
+
+local CMD = {}
 
 local ws = {}
 function ws.connect(fd)
@@ -35,33 +51,17 @@ function ws.handshake(fd, header, url)
 end
 
 function ws.message(fd, msg)
-    --log.debugf("on message, fd:%s, msg:%s", fd, msg)
+    -- log.debugf("on message, fd:%s, msg:%s", fd, msg)
     local req = unpack(msg)
-    --log.debug("unpack", req)
-
-    local function response(data)
-        if type(data) == "number" then
-            data = {err = data}
-        end
-        data.err = data.err or 0
-
-        websocket.write(fd, pack {
-            name = string.gsub(req.name, "c2s", "s2c"),
-            session = req.session,
-            data = data,
-        }, is_binary and "binary" or "text")
-    end
-
-    local mod, name = string.match(req.name, "(%w+)%.(.+)$")
-    if not process[mod] or not process[mod][name] then
-        return response(errcode.PROTOCOL_NOT_FOUND)
-    end
-    if not bewater.try(function()
-        local role = fd2role[fd]
-        local func = process[mod][name]
-        response(func(role, req.data, fd) or 0)
-    end) then
-        return response(errcode.TRACEBACK)
+    local user = get_user(fd)
+    local resp = {
+        op = req.op + 1,
+        session = req.session,
+        data = process(user, req.op, req.data)
+    }
+    user.session = req.session
+    if resp.data then
+        websocket.write(fd, pack(resp), is_binary and "binary" or "text")
     end
 end
 
@@ -75,77 +75,92 @@ end
 
 function ws.close(fd, code, reason)
     log.debug("ws close from: " .. tostring(fd), code, reason)
-    M.close(fd)
+    CMD.close(fd)
 end
 
 function ws.error(fd)
-    print("ws error from: " .. tostring(fd))
-    M.close(fd)
+    log.debug("ws error from: " .. tostring(fd))
+    CMD.close(fd)
 end
 
-function M.start(handler)
-    protocol  = handler.protocol or "ws"
-    pack      = handler.pack or default_pack
-    unpack    = handler.unpack or default_unpack
-    onclose   = handler.onclose
-    is_binary = handler.is_binary
-    process   = assert(handler.process)
+function CMD.open(fd, addr)
+    log.debug("open", fd, protocol, addr)
+    local user = create_user(fd, addr)
+    fd2user[fd] = user
+    local ok, err = websocket.accept(fd, ws, protocol, addr)
+    -- log.debug("open result", ok, err)
+    if not ok then
+        log.error(err)
+    else
+        fd2user[fd] = nil
+    end
+end
+
+function CMD.close(fd)
+    destroy_user(fd)
+    websocket.close(fd)
+end
+
+
+function CMD.send(fd, op, data, session)
+    assert(fd)
+    assert(op)
+
+    log.debug("send", fd, op, data, session)
+
+    websocket.write(fd, pack {
+        op = op,
+        data = data or {},
+        session = session or 0,
+    }, is_binary and "binary" or "text")
+end
+
+local M = {
+    open = CMD.open,
+    close = CMD.close,
+}
+function M.start(conf)
+    protocol = conf.protocol or "ws"
+    pack = conf.pack or default_pack
+    unpack = conf.unpack or default_unpack
+    onclose = conf.onclose
+    is_binary = conf.is_binary
+    process = assert(conf.process)
+    local start_func = conf.start_func
+
+    local command = assert(conf.command)
+    for k, v in pairs(CMD) do
+        command[k] = command[k] or v
+    end
 
     skynet.start(function()
         skynet.dispatch("lua", function(_,_, cmd, ...)
-            local f = assert(M[cmd], cmd)
-            skynet.ret(f(...))
+            local f = assert(command[cmd], cmd)
+            skynet.retpack(f(...))
         end)
+
+        if start_func then
+            start_func()
+        end
     end)
 end
 
-function M.open(fd, addr)
-    log.debug("open", fd, protocol, addr)
-    local ok, err = websocket.accept(fd, ws, protocol, addr)
-    if not ok then
-        log.error(err)
-    end
-end
-
-function M.close(fd)
-    local role = fd2role[fd]
-    websocket.close(fd)
-    M.unbind_fd_role(fd, role)
-    if onclose then
-        onclose(role)
-    end
-end
-
-function M.bind_fd_role(fd, role)
+function M.send(fd, op, data)
     assert(fd)
-    assert(role)
-
-    M.unbind_fd_role(role2fd[role], fd2role[fd])
-
-    fd2role[fd] = role
-    role2fd[role] = fd
-end
-
-function M.unbind_fd_role(fd, role)
-    if fd then
-        fd2role[fd] = nil
-    end
-    if role then
-        role2fd[role] = nil
-    end
-end
-
-function M.send(role, opname, data)
-    local fd = role2fd[role]
-    if not fd then
-        return
-    end
-
-    websocket.write(fd, pack {
-        name    = opname,
-        data    = data,
+    local resp = {
+        op = assert(op),
         session = 0,
-    }, is_binary and "binary" or "text")
+        data = data
+    }
+
+    local ok, errmsg = xpcall(function ()
+        websocket.write(fd, pack(resp), is_binary and "binary" or "text")
+    end, debug.traceback)
+    if not ok then
+        log.warningf("send 0x%x error", op)
+        log.warning("send data", data)
+        log.warning(errmsg)
+    end
 end
 
 return M
